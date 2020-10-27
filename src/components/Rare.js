@@ -4,7 +4,9 @@ import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-
+import { PostsProvider } from "./posts/PostsProvider";
+import { Posts } from "./posts/Posts";
+import { PostsList } from "./posts/PostsList"
 export const Rare = () => (
     <>
         <Route render={() => {
@@ -17,6 +19,14 @@ export const Rare = () => (
                 return <Redirect to="/login" />
             }
         }} />
+
+    <PostsProvider>
+        <Posts>
+        <Route path="/posts" component={PostsList} exact />
+        </Posts>
+    </PostsProvider>
+    
+
 
         <Route path="/login" render={() => {
             if (localStorage.getItem("rare_user_id")) {
