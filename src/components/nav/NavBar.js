@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./NavBar.css"
@@ -13,6 +14,9 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/">Posts</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/categories">Categories</Link>
             </li>
             {
                 (localStorage.getItem("rare_user_id") !== null) ?
