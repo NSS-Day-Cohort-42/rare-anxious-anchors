@@ -11,7 +11,7 @@ useEffect(() => {
 }, [])
 
 return (
-        <div className="animals">
+        <div className="PostsItem">
             {
                 posts.map(post => <Posts key={post.id} post={post} />)
             }
