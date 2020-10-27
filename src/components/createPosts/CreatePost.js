@@ -1,9 +1,39 @@
 import React, { useContext, useEffect, useState } from "react";
+import { CategoryContext } from "../Categories/CategoryProvider";
+import { PostContext } from "../Posts/PostProvider";
 import "./CreatePost.css";
 
 export const CreatePostForm = (props) => {
 
+  const { categories, getCategories } = useContext(CategoryContext);
+  const { posts, getPosts, addPost } = useContext(PostContext);
 
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  // const handleControledInputChange = (event) => {
+  //   const newPost = Object.assign({}, post);
+  //   newPost[event.target.name] = event.target.value;
+  //   setPost(newPost);
+  // }
+
+  const saveEntry = () => {
+    const postBody = "test body of text"
+    const postDate = Date.now()
+    const title = "testTitle"
+    const userId = parseInt(localStorage.getItem("rare_user_id"))
+    const CategoryId = 2
+
+    addPost({
+      postBody: postBody,
+      postDate: postDate,
+      title: title,
+      userId: userId,
+      CategoryId: CategoryId,
+    }).then(() => props.history.push("./posts"))
+
+  }
 
   return (
     <>
@@ -53,6 +83,11 @@ export const CreatePostForm = (props) => {
                   className="form-control"
                 >
                   <option value="0">Select a Category</option>
+                  {categories.map((e) => (
+                    <option key={e.id} value={e.id}>
+                      {e.name}
+                    </option>
+                  ))}
                 </select>
               </div>
             </fieldset>
@@ -60,7 +95,7 @@ export const CreatePostForm = (props) => {
               type="submit"
               onClick={(evt) => {
                 evt.preventDefault();
-                // saveEntry();
+                saveEntry();
               }}
               >Save Entry</button>
           </form>
