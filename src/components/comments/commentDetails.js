@@ -1,17 +1,31 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { commentContext } from "./commentProvider"
 
-return (
-    <section className="animal">
-          <button onClick={()=> history.push("/")} >x</button>
-        <h3 className="animal__name">{animal.name}</h3>
-        <div className="animal__breed">Breed: {animal.breed}</div>
-        <div className="animal__location">Location: {animal.address}</div>
-        <div className="animal__owner">Customer: {customer.name}</div>
-        <div className="animal__treatment">Status: {animal.status}</div>
+export const CommentBuilder = () => {
 
-      
-
+    const history = useHistory()
+    const { comments, getComments } = useContext(commentContext)
  
-    </section>
-)
+
+    useEffect(() => {
+        getComments()
+    }, [])
+    
+    return <> 
+       
+        <section className="comment"> hi
+            {comments.map((comment, key) => {
+                return (
+                    <div key={key}>
+                        <button onClick={() => history.push("/")} >x</button>
+                        {/* <div> Date: {HumanDate(comment.timestamp)}</div> */}
+                        <h3 className="comment__Subject">{comment.commentSubject}</h3>
+                        <div className="comment__commentBody">{comment.commentBody}</div>
+                    </div>
+                )
+            })}
+       
+        </section>
+    </>
+}
