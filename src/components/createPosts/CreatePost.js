@@ -48,10 +48,18 @@ export const CreatePostForm = (props) => {
                   id="CategoryId"
                   required
                   className="form-control"
-                />
-                <option value="0">Select a Category</option>
+                >
+                  <option value="0">Select a Category</option>
+                </select>
               </div>
             </fieldset>
+            <button
+              type="submit"
+              onClick={(evt) => {
+                evt.preventDefault();
+                // saveEntry();
+              }}
+              >Save Entry</button>
           </form>
         </div>
       </div>
