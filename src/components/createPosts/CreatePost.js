@@ -3,7 +3,7 @@ import "./CreatePost.css";
 
 export const CreatePostForm = (props) => {
 
-  // const { getCategories }
+
 
   return (
     <>
