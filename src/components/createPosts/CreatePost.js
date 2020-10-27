@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../Categories/CategoryProvider";
-import { PostContext } from "../Posts/PostProvider";
+import { PostsContext } from "../posts/PostsProvider";
 import "./CreatePost.css";
 
 export const CreatePostForm = (props) => {
 
   const { categories, getCategories } = useContext(CategoryContext);
-  const { posts, getPosts, addPost } = useContext(PostContext);
+  const { posts, getPosts, addPost } = useContext(PostsContext);
 
   useEffect(() => {
     getCategories();
+    getPosts();
   }, []);
 
   // const handleControledInputChange = (event) => {

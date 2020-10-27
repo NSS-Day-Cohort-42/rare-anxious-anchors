@@ -1,8 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { AddAComment } from './comments/commentForm'
-import { CommentBuilder } from './comments/commentDetails'
-import { CommentProvider } from "./comments/commentProvider";
+// import { AddAComment } from './comments/commentForm'
+// import { CommentBuilder } from './comments/commentDetails'
+// import { CommentProvider } from "./comments/commentProvider";
 import { PostsProvider } from "./posts/PostsProvider";
 import { Posts } from "./posts/Posts";
 import { PostsList } from "./posts/PostsList"
@@ -16,13 +16,13 @@ export const ApplicationViews = (props) => {
         }}>
             <CategoryProvider>
                 <PostsProvider>
-                    <CommentProvider>
-                        <Route path="/comments" exact>
+                    {/* <CommentProvider> */}
+                        {/* <Route path="/comments" exact>
                             <CommentBuilder />
-                        </Route>
-                        <Route path="/commentForm" exact render={
+                        </Route> */}
+                        {/* <Route path="/commentForm" exact render={
                             props => <AddAComment {...props} />}>
-                        </Route>
+                        </Route> */}
                         <Route exact path="/posts/create"
                             render={(props) => {
                                 return <CreatePostForm {...props} />;
@@ -30,7 +30,7 @@ export const ApplicationViews = (props) => {
                         <Route exact path="/posts">
                             <PostsList />
                         </Route>
-                    </CommentProvider>
+                    {/* </CommentProvider> */}
                 </PostsProvider>
             </CategoryProvider>
         </main>
