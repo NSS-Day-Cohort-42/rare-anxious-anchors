@@ -1,7 +1,10 @@
 import React from "react"
 
-export const Category = () => (
-    <section className="category">
+export const Category = ({category}) => {
+    return (
+    <div className="categoryCard">
         <h3 className="category_name">Categories</h3>
-    </section>
-)
+        <div className="categoryItem">{category.name}</div>
+
+    </div>
+    )};
