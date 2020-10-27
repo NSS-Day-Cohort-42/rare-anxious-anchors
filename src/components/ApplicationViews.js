@@ -3,8 +3,9 @@ import { Route } from "react-router-dom"
 import { PostsProvider } from "./posts/PostsProvider";
 import { Posts } from "./posts/Posts";
 import { PostsList } from "./posts/PostsList"
+import { CreatePostForm } from "./createPosts/CreatePost"
 
-export const ApplicationViews = () => {
+export const ApplicationViews = (props) => {
     return <>
         <main style={{
             margin: "5rem 2rem",
@@ -17,5 +18,11 @@ export const ApplicationViews = () => {
                     <PostsList />
             </Route>
         </PostsProvider>
+        
+        <Route exact path="/posts/create"
+        render={(props) => {
+            return <CreatePostForm {...props} />;
+        }}
+        />
     </>
 }
