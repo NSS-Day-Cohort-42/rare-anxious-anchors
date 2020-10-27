@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import "./CreatePost.css";
 
 export const CreatePostForm = (props) => {
+
+  // const { getCategories }
+
   return (
     <>
       <div className="centeringContainer">
