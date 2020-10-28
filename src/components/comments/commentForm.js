@@ -26,7 +26,7 @@ export const CreateAComment = () => {
             commentBody: commentBody.current.value,
             userId: parseInt(localStorage.getItem('rare_user_id')),
             postId: parseInt(''),
-            timeStamp: HumanDate
+            timeStamp: ''
         }
         AddAComment(newComment).then(() => {
            history.push('/comments')
