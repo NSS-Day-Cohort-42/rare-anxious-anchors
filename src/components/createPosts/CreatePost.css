@@ -1,0 +1,8 @@
+.centeringContainer {
+  display: flex;
+  justify-content: center;
+}
+.CreatePostContainer {
+  display: flex;
+  flex-direction: column;
+}

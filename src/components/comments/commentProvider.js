@@ -10,7 +10,7 @@ export const CommentProvider = (props) => {
         .then(res => res.json())
         .then(setComments)
 
-    const addAComment = async comment => {
+    const AddAComment = async comment => {
         const result = await fetch("http://localhost:8088/comments", {
             method: "POST",
             headers: {
@@ -18,12 +18,12 @@ export const CommentProvider = (props) => {
             },
             body: JSON.stringify(comment)
         })
-        return getComments(comment)
+        return getComments(result)
     }
 
     return (
         <commentContext.Provider value={{
-            comments, setComments, getComments, addAComment
+            comments, setComments, getComments, AddAComment
         }}>
             {props.children}
         </commentContext.Provider>

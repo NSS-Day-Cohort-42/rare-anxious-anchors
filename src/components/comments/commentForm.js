@@ -1,27 +1,30 @@
-import React, { useRef } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import React, { useRef, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import { commentContext } from './commentProvider'
 
 
 
 
-export const AddAComment = () => {
-    const history = useHistory()
+
+
+export const CreateAComment = () => {
+    const { AddAComment, getComments } = useContext(commentContext)
     const commentSubject = useRef()
     const commentBody = useRef()
+    const history = useHistory()
 
-
-    const constructAComment = () => {
-
+    const ConstructAComment = () => {
+   
         const newComment = {
             commentSubject: commentSubject.current.value,
             commentBody: commentBody.current.value,
             userId: parseInt(localStorage.getItem('rare_user_id')),
             postId: parseInt(''),
-            timestamp: Date.now()
+            timeStamp: Date.now()
         }
         AddAComment(newComment).then(() => {
-            history.push('/')
-        })
+           history.push('/comments')
+        }).then(getComments)
     }
 
     return (
@@ -31,9 +34,9 @@ export const AddAComment = () => {
                     <input type="text" placeholder="commentSubject" ref={commentSubject} />
                 </label>
                 <label className="comment__Label">
-                    <input type="text" placeholder="commenBody" ref={commentBody} />
+                    <input type="text" placeholder="commentBody" ref={commentBody} />
                 </label>
-                <button className="button--submit" onClick={(e) => constructAComment()}>Add Comment</button>
+                <button className="button--submit" onClick={(e) => ConstructAComment()}>Add Comment</button>
             </section>
         </main>
     )
