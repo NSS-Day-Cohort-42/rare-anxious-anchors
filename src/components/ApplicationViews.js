@@ -10,11 +10,11 @@ import { CreatePostForm } from "./createPosts/CreatePost"
 
 export const ApplicationViews = (props) => {
     return <>
-     <PostProvider>
+     <PostsProvider>
                 <Route path="/posts/:postId(\d+)" render={
                     props => <PostDetails {...props} />
                 } />
-            </PostProvider>
+            </PostsProvider>
             
 
         <main style={{
