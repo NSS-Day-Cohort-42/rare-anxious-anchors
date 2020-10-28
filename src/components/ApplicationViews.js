@@ -4,8 +4,9 @@ import { PostDetails } from "./posts/postDetail"
 import { PostProvider } from "./posts/postProvider"
 
                            
+import { CreatePostForm } from "./createPosts/CreatePost"
 
-export const ApplicationViews = () => {
+export const ApplicationViews = (props) => {
     return <>
      <PostProvider>
                 <Route path="/posts/:postId(\d+)" render={
@@ -19,5 +20,10 @@ export const ApplicationViews = () => {
             lineHeight: "1.75rem"
         }}>
         </main>
+        <Route exact path="/posts/create"
+        render={(props) => {
+            return <CreatePostForm {...props} />;
+        }}
+        />
     </>
 }

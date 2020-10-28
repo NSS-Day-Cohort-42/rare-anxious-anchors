@@ -26,11 +26,12 @@ export const PostDetails = (props) => {
             <div className="body">
                 <h3>{post.postBody}</h3>
                 <h4>{handleDate(post.postDate)}</h4>
-                <div>{post.Author}</div>
+                <div>{post.displayName}</div>
 
             </div>
             <div>
             </div>
+            <br></br>
             <button onClick={() => {
                 props.history.push(`/tags`)
             }}>Manage Tags</button>
