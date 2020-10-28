@@ -1,5 +1,6 @@
 import React, { useRef, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import { HumanDate } from '../utils/HumanDate'
 import { commentContext } from './commentProvider'
 
 
@@ -8,7 +9,12 @@ import { commentContext } from './commentProvider'
 
 
 export const CreateAComment = () => {
+
     const { AddAComment, getComments } = useContext(commentContext)
+ 
+ 
+
+
     const commentSubject = useRef()
     const commentBody = useRef()
     const history = useHistory()
@@ -20,7 +26,7 @@ export const CreateAComment = () => {
             commentBody: commentBody.current.value,
             userId: parseInt(localStorage.getItem('rare_user_id')),
             postId: parseInt(''),
-            timeStamp: Date.now()
+            timeStamp: HumanDate
         }
         AddAComment(newComment).then(() => {
            history.push('/comments')
