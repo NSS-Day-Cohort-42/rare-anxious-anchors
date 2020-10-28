@@ -1,5 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { CategoryProvider } from "./Categories/CategoryProvider"
+import { CategoryList } from "./Categories/CategoryList"
 import { PostsProvider } from "./posts/PostsProvider";
 import { Posts } from "./posts/Posts";
 import { PostsList } from "./posts/PostsList"
@@ -13,9 +15,15 @@ export const ApplicationViews = (props) => {
         }}>
         </main>
 
+        <CategoryProvider>
+            <Route exact path="/categories">
+                <CategoryList />
+            </Route>
+        </CategoryProvider>
+
         <PostsProvider>
             <Route exact path="/posts">
-                    <PostsList />
+                <PostsList />
             </Route>
         </PostsProvider>
         
