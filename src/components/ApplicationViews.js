@@ -8,7 +8,6 @@ import { CategoryList } from "./Categories/CategoryList"
 import { PostsProvider } from "./posts/PostsProvider";
 import { PostsList } from "./posts/PostsList"
 import { CreatePostForm } from "./createPosts/CreatePost"
-import { CategoryProvider } from "./Categories/CategoryProvider"
 import { PostDetails } from "./posts/PostDetails"
 
 export const ApplicationViews = (props) => {
