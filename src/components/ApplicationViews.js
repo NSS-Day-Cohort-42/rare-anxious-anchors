@@ -3,7 +3,6 @@ import { Route } from "react-router-dom"
 import { CategoryProvider } from "./Categories/CategoryProvider"
 import { CategoryList } from "./Categories/CategoryList"
 import { PostsProvider } from "./posts/PostsProvider";
-import { Posts } from "./posts/Posts";
 import { PostsList } from "./posts/PostsList"
 import { CreatePostForm } from "./createPosts/CreatePost"
 import { PostDetails } from "./posts/PostDetails"
