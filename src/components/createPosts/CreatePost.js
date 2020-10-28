@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../Categories/CategoryProvider";
-import { PostsContext } from "../posts/PostsProvider";
+// import { PostsContext } from "../posts/PostsProvider";
 import "./CreatePost.css";
 
 export const CreatePostForm = (props) => {
 
   const { categories, getCategories } = useContext(CategoryContext);
-  const { posts, getPosts, addPost } = useContext(PostsContext);
+  // const { posts, getPosts, addPost } = useContext(PostsContext);
 
   useEffect(() => {
     getCategories();
-    getPosts();
+    // getPosts();
   }, []);
 
   // const handleControledInputChange = (event) => {
@@ -26,13 +26,13 @@ export const CreatePostForm = (props) => {
     const userId = parseInt(localStorage.getItem("rare_user_id"))
     const CategoryId = 2
 
-    addPost({
-      postBody: postBody,
-      postDate: postDate,
-      title: title,
-      userId: userId,
-      CategoryId: CategoryId,
-    }).then(() => props.history.push("./posts"))
+    // addPost({
+    //   postBody: postBody,
+    //   postDate: postDate,
+    //   title: title,
+    //   userId: userId,
+    //   CategoryId: CategoryId,
+    // }).then(() => props.history.push("./posts"))
 
   }
 
