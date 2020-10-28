@@ -1,11 +1,14 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { PostsContext } from "./PostsProvider"
 
 
-export const PostDetails = (props) => {
-    const { getPostById } = useContext(PostsContext)
 
-    const [post, setPost] = useState({user: {}})
+export const PostDetails = (props) => {
+
+    const deletePostDialog = useRef(null)
+    const { getPostById, deletePost } = useContext(PostsContext)
+
+    const [post, setPost] = useState({ user: {} })
 
     useEffect(() => {
         const postId = parseInt(props.match.params.postId)
@@ -14,7 +17,7 @@ export const PostDetails = (props) => {
     }, [])
 
     const handleDate = (date) => {
-        if("postDate" in post){
+        if ("postDate" in post) {
             return new Date(date).toDateString()
         }
     }
@@ -31,6 +34,22 @@ export const PostDetails = (props) => {
             </div>
             <div>
             </div>
+
+            <button
+                className="delete_button"
+                onClick={() => {
+                    deletePostDialog.current.showModal()
+                }}>Delete Post</button>
+
+            <dialog className="delete_post" ref={deletePostDialog}>
+                <div>Are you sure you want to delete this post?</div>
+                <button className="close_dialog" onClick={e => deletePostDialog.current.close()}>Close</button>
+                <button className="delete_dialog"
+                    onClick={e => {
+                        deletePost(post.id)
+                        props.history.push("/posts")
+                    }}>Delete Post</button>
+            </dialog>
             <br></br>
             <button onClick={() => {
                 props.history.push(`/tags`)

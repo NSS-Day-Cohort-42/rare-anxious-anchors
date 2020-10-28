@@ -5,7 +5,8 @@ import "./NavBar.css";
 import Logo from "./rare.jpeg";
 
 export const NavBar = () => {
-const history = useHistory();
+    const history = useHistory();
+
     return (
         <ul className="navbar">
             <li className="navbar__item">
