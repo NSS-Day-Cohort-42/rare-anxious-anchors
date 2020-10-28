@@ -51,13 +51,6 @@ export const ApplicationViews = (props) => {
               <Route exact path="/posts">
                 <PostsList />
               </Route>
-              <Route
-                exact
-                path="/posts/create"
-                render={(props) => {
-                  return <CreatePostForm {...props} />;
-                }}
-              />
             </CommentProvider>
           </PostsProvider>
         </CategoryProvider>
