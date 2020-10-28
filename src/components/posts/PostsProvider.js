@@ -32,10 +32,18 @@ useEffect(() => {
         })
         .then(getPosts) 
     }
+
+    const deletePost = postId => {
+        return fetch(`http://localhost:8088/posts/${postId}`, {
+            method: "DELETE"
+        })
+            .then(getPosts)
+    }
+
 console.log(posts)
     return (
         <PostsContext.Provider value={{
-            posts, getPosts, addPost, getPostById
+            posts, getPosts, addPost, getPostById, deletePost
         }}>
             {props.children}
         </PostsContext.Provider>
