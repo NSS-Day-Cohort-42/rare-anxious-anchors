@@ -15,7 +15,7 @@ export const ApplicationViews = (props) => {
         }}>
         </main>
 
-       <CategoryProvider>
+        <CategoryProvider>
             <Route exact path="/categories">
                 <CategoryList />
             </Route>
@@ -23,7 +23,7 @@ export const ApplicationViews = (props) => {
 
         <PostsProvider>
             <Route exact path="/posts">
-                    <PostsList />
+                <PostsList />
             </Route>
         </PostsProvider>
         
@@ -31,6 +31,6 @@ export const ApplicationViews = (props) => {
         render={(props) => {
             return <CreatePostForm {...props} />;
         }}
-        </>
+        />
     </>
 }
