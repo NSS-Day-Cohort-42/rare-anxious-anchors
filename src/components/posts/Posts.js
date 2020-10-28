@@ -9,8 +9,8 @@ export const Posts = ({post}) => {
         <div className="PostSection">
             <div className="PostContent">{post.postBody}</div>
             <div className="PostContent">{post.Id}</div>
-            <div className="PostContent">{post.userId}</div>
-            <div className="PostContent">{post.categoryId}</div>
+    <div className="PostContent">{post.user.firstName} {post.user.lastName}</div>
+            <div className="PostContent">{post.category.name}</div>
         </div>
         <div className="PostDate">{post.postDate}</div>
     </div>
