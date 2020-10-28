@@ -3,11 +3,13 @@ import { Route } from "react-router-dom"
 import { CreateAComment } from './comments/commentForm'
 import { CommentBuilder } from './comments/commentDetails'
 import { CommentProvider } from "./comments/commentProvider";
+import { CategoryProvider } from "./Categories/CategoryProvider"
+import { CategoryList } from "./Categories/CategoryList"
 import { PostsProvider } from "./posts/PostsProvider";
-import { Posts } from "./posts/Posts";
 import { PostsList } from "./posts/PostsList"
 import { CreatePostForm } from "./createPosts/CreatePost"
 import { CategoryProvider } from "./Categories/CategoryProvider"
+import { PostDetails } from "./posts/PostDetails"
 
 export const ApplicationViews = (props) => {
     return <>
@@ -34,6 +36,22 @@ export const ApplicationViews = (props) => {
                     </CommentProvider>
                 </PostsProvider>
             </CategoryProvider>
+        
+
+        <Route path="/posts/:postId(\d+)" render={
+            props => <PostDetails {...props} />
+        } />
+        <Route exact path="/categories">
+            <CategoryList />
+        </Route>
+        <Route exact path="/posts">
+            <PostsList />
+        </Route>
+        <Route exact path="/posts/create"
+            render={(props) => {
+                return <CreatePostForm {...props} />;
+            }}
+        />
         </main>
     </>
 }
