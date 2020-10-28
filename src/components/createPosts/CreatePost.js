@@ -1,38 +1,34 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { CategoryContext } from "../Categories/CategoryProvider";
-// import { PostsContext } from "../posts/PostsProvider";
+import { PostsContext } from "../posts/PostsProvider";
 import "./CreatePost.css";
 
 export const CreatePostForm = (props) => {
 
   const { categories, getCategories } = useContext(CategoryContext);
-  // const { posts, getPosts, addPost } = useContext(PostsContext);
+  const { addPost } = useContext(PostsContext);
+
+  const postBody = useRef(null)
+  const title = useRef(null)
+  const Category = useRef(null)
+  
 
   useEffect(() => {
     getCategories();
-    // getPosts();
   }, []);
 
-  // const handleControledInputChange = (event) => {
-  //   const newPost = Object.assign({}, post);
-  //   newPost[event.target.name] = event.target.value;
-  //   setPost(newPost);
-  // }
-
   const saveEntry = () => {
-    const postBody = "test body of text"
-    const postDate = Date.now()
-    const title = "testTitle"
+    const CategoryId = parseInt(Category.current.value)
     const userId = parseInt(localStorage.getItem("rare_user_id"))
-    const CategoryId = 2
 
-    // addPost({
-    //   postBody: postBody,
-    //   postDate: postDate,
-    //   title: title,
-    //   userId: userId,
-    //   CategoryId: CategoryId,
-    // }).then(() => props.history.push("./posts"))
+    addPost({
+      postBody: postBody.current.value,
+      postDate: Date.now(),
+      title: title.current.value,
+      userId: userId,
+      CategoryId: CategoryId,
+    })
+    .then(() => props.history.push("./posts"))
 
   }
 
@@ -46,6 +42,7 @@ export const CreatePostForm = (props) => {
               <div className="form-group">
                 <label htmlFor="PostTitle">Title:</label>
                 <input
+                  ref={title}
                   type="text"
                   name="title"
                   id="postTitle"
@@ -60,6 +57,7 @@ export const CreatePostForm = (props) => {
               <div className="form-group">
                 <label htmlFor="PostBody">Body:</label>
                 <textarea
+                  ref={postBody}
                   rows="600"
                   cols="50"
                   name="postBody"
@@ -75,8 +73,7 @@ export const CreatePostForm = (props) => {
                 <label htmlFor="ChooseCategory">Assign a Category:</label>
                 <select
                   proptype="int"
-                  // value={category.name}
-                  // onChange={handleControledInputChange}
+                  ref={Category}
                   type="text"
                   name="CategoryId"
                   id="CategoryId"
