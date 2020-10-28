@@ -28,7 +28,7 @@ export const CreatePostForm = (props) => {
       userId: userId,
       CategoryId: CategoryId,
     })
-    .then(() => props.history.push("./posts"))
+    .then(() => props.history.push("./"))
 
   }
 
