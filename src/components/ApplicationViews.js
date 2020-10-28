@@ -5,6 +5,7 @@ import { CategoryList } from "./Categories/CategoryList"
 import { PostsProvider } from "./posts/PostsProvider";
 import { PostsList } from "./posts/PostsList"
 import { CreatePostForm } from "./createPosts/CreatePost"
+import { PostDetails } from "./posts/PostDetails"
 
 export const ApplicationViews = (props) => {
     return <>
@@ -13,6 +14,11 @@ export const ApplicationViews = (props) => {
             lineHeight: "1.75rem"
         }}>
         </main>
+        <PostsProvider>
+            <Route path="/posts/:postId(\d+)" render={
+                props => <PostDetails {...props} />
+                } />
+        </PostsProvider>
 
         <CategoryProvider>
             <Route exact path="/categories">
