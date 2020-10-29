@@ -7,7 +7,7 @@ export const CategoryList = () => {
 
     useEffect(() => {
         getCategories()
-    }, [getCategories])
+    }, [])
 
     return (
         <div ClassName="CategoryItems">
