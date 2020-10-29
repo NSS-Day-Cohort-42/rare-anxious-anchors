@@ -61,7 +61,7 @@ export const PostDetails = (props) => {
                 props.history.push(`/comments`)
             }}>Show Comments</button>
             <button onClick={() => {
-                props.history.push(`/comments`)
+                props.history.push(`/commentForm`)
             }}>Add Comment</button>
 
         </div>
