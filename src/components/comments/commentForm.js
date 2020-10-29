@@ -1,17 +1,25 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { HumanDate } from '../utils/HumanDate'
 import { commentContext } from './commentProvider'
+import { PostsContext } from '../posts/PostsProvider'
 
 
 
 
 
 
-export const CreateAComment = () => {
+export const CreateAComment = (props) => {
 
-    const { AddAComment, getComments } = useContext(commentContext)
+    const { AddAComment, comments, getComments } = useContext(commentContext)
+
+    // const { getPostById } = useContext(PostsContext)
+
+    // const [post, setPost] = useState({ user: {} })
  
+//     const getValue = comments.map((id)=> {
+//  return id.postId === posts.id
+//  })
  
 
 
@@ -20,15 +28,16 @@ export const CreateAComment = () => {
     const history = useHistory()
 
     const ConstructAComment = () => {
-   
-        const newComment = {
+
+         AddAComment ({
+            
             commentSubject: commentSubject.current.value,
             commentBody: commentBody.current.value,
             userId: parseInt(localStorage.getItem('rare_user_id')),
-            postId: parseInt(''),
-            timeStamp: ''
-        }
-        AddAComment(newComment).then(() => {
+            postId:3
+            // timeStamp: '',
+        })
+.then(() => {
            history.push('/comments')
         }).then(getComments)
     }
